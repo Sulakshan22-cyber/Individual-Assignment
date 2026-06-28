@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SRC Election Portal – MILA University</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Login Form -->
+        <div class="login-left">
+            <div class="login-form-wrapper">
+                <h1>Login</h1>
+                <p>Sign in to your account</p>
+
+                <% if (error) { %>
+                    <div class="error-msg"><%= error %></div>
+                <% } %>
+
+                <form action="/login" method="POST">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+
+                <p class="login-hint">Don't have an account? <a href="#sign-up">Sign up</a></p>
+            </div>
+            <div class="login-footer">
+                <img class="footer-logo" src="/images/mila logo.png" alt="MILA University logo">
+            </div>
+        </div>
+
+        <!-- Right Side - Welcome Section -->
+        <div class="login-right">
+            <div class="welcome-content">
+                <img class="src-logo" src="/images/src logo.png" alt="SRC Logo">
+                <h2>Welcome to<br><span>student portal</span></h2>
+                <p>SRC Election Portal — MILA University</p>
+                <div class="student-illustration">
+                    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Illustration placeholder - you can replace with actual image -->
+                        <circle cx="150" cy="120" r="40" fill="#FFD700" opacity="0.3"/>
+                        <rect x="100" y="160" width="100" height="80" rx="10" fill="#FFD700" opacity="0.2"/>
+                        <circle cx="80" cy="100" r="30" fill="#ffffff" opacity="0.2"/>
+                        <circle cx="220" cy="110" r="35" fill="#ffffff" opacity="0.2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

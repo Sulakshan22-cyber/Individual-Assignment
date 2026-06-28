@@ -322,45 +322,36 @@ This provides a server-side record of all user actions for accountability purpos
 | nodemon | ^3.x | Auto-restart during development |
 
 ---
-<b>OUTPUT 1</b>
+## 📸 Screenshots
 
-(LOG IN PAGE)
+**OUTPUT 1 — Login Page**
 
-<img src="images/image-log in page.png" alt="Description of image" width="300">
+![Login Page](public/images/loginpage.png)
+
+**OUTPUT 2 — Main Page**
+
+![Main Page](public/images/image-main1.png)
+
+**OUTPUT 3**
+
+![Main Page 2](public/images/image-main2.png)
+
+**OUTPUT 4- After done voting**
+
+![After Vote](public/images/image-voting.png)
 
 
-<b>OUTPUT 2</b>
+**OUTPUT 5 — Admin Page**
 
-(MAIN PAGE)
+![Admin Page](public/images/image-admin1.png)
 
-<img src="images/image-main page 1.png" alt="Description of image" width="300">
+**OUTPUT 6**
 
+![Admin Page 2](public/images/image-admin2.png)
 
-<b>OUTPUT 3</b>
+**OUTPUT 7 — Recorded databse of the voters**
 
-<img src="images/image-main page 2.png" alt="Description of image" width="300">
-
-<b>OUTPUT 4</b>
-
-(AFTER DONE VOTING)
-
-<img src="images/image-voting.png" alt="Description of image" width="300">
-
-<b>OUTPUT 5</b>
-
-(ADMIN PAGE)
-
-<img src="images/image-admin 1.png" alt="Description of image" width="300">
-
-<b>OUTPUT 6</b>
-
-<img src="images/image-admin 2.png" alt="Description of image" width="300">
-
-<b>OUTPUT 7</b>
-
-(DATABASE OF PEOPLE WHO HAVE VOTED)
-
-<img src="images/image-system.png" alt="Description of image" width="300">
+![System](public/images/image-system.png)
 
 
 

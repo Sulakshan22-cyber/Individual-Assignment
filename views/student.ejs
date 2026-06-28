@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard – SRC Election</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="student-page">
+    <div class="navbar">
+        <h1><img class="navbar-logo" src="/images/mila logo.png" alt="SRC logo"> 🏛️ SRC Election Portal</h1>
+        <div style="display:flex; align-items:center; gap:15px;">
+            <span>Welcome, <strong><%= username %></strong></span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <div class="student-container">
+        <% if (hasVoted) { %>
+            <div class="alert alert-success">
+                <div class="alert-icon">✔</div>
+                <div class="alert-content">
+                    <strong>Thank you for voting!</strong>
+                    <p>Your vote has been successfully recorded.</p>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="alert alert-info">
+                <div class="alert-icon">📋</div>
+                <div class="alert-content">
+                    <strong>Cast Your Vote</strong>
+                    <p>Select your preferred candidate for each position. You can only vote once.</p>
+                </div>
+            </div>
+        <% } %>
+
+        <form action="/vote" method="POST">
+            <% positions.forEach(pos => { %>
+                <div class="position-section">
+                    <div class="position-header">
+                        <h2><%= pos %></h2>
+                        <div class="position-line"></div>
+                    </div>
+                    <div class="candidates-grid">
+                        <% grouped[pos].forEach(candidate => { %>
+                            <div class="candidate-card">
+                                <div class="candidate-image-wrapper">
+                                    <img src="<%= candidate.avatar %>" alt="<%= candidate.name %>" class="candidate-image">
+                                </div>
+                                <div class="candidate-info">
+                                    <h3><%= candidate.name %></h3>
+                                    <p class="manifesto"><%= candidate.manifesto %></p>
+                                </div>
+                                <div class="candidate-action">
+                                    <% if (hasVoted) { %>
+                                        <button class="voted-btn" disabled>✓ Vote Submitted</button>
+                                    <% } else { %>
+                                        <label class="vote-radio">
+                                            <input type="radio" name="<%= pos.replace(' ', '_') %>" value="<%= candidate.id %>" required>
+                                            <span class="radio-custom"></span>
+                                            <span class="radio-label">Select Candidate</span>
+                                        </label>
+                                    <% } %>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %>
+
+            <% if (!hasVoted) { %>
+                <div class="submit-section">
+                    <button type="submit" class="submit-vote-btn">🗳️ Submit My Vote</button>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</body>
+</html>

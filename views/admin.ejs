@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard – SRC Election</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="admin-page">
+    <div class="navbar">
+        <h1>🏛️ SRC Election Portal &nbsp;|&nbsp; Admin Dashboard</h1>
+        <div style="display:flex; align-items:center; gap:15px;">
+            <span>Welcome, <strong><%= username %></strong></span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <div class="admin-header">
+        <img src="/images/mila logo.png" alt="MILA Logo" class="admin-logo">
+    </div>
+
+    <div class="container admin-container">
+
+        <% if (leading && leading.voteCount > 0) { %>
+        <div class="leading-card">
+            <div>
+                <h3>🏆 Leading Candidate</h3>
+                <div class="name"><%= leading.name %></div>
+                <div class="position"><%= leading.position %></div>
+            </div>
+            <div class="vote-info"><%= leading.voteCount %> votes &nbsp; <%= voted > 0 ? Math.round((leading.voteCount/voted)*100) : 0 %>%</div>
+        </div>
+        <% } %>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="number"><%= total %></div>
+                <div class="label">Total Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="number"><%= voted %></div>
+                <div class="label">Votes Cast</div>
+            </div>
+            <div class="stat-card">
+                <div class="number"><%= participation %>%</div>
+                <div class="label">Participation</div>
+            </div>
+        </div>
+
+        <% positions.forEach(pos => { %>
+        <div class="results-section">
+            <h2><%= pos %> Results</h2>
+            <% const posResults = results[pos]; %>
+            <% const maxVotes = posResults.length > 0 ? Math.max(...posResults.map(c => c.voteCount)) : 1; %>
+
+            <% posResults.forEach((c, i) => { %>
+            <div class="result-row">
+                <div class="result-rank"><%= i + 1 %></div>
+                <div class="result-name"><%= c.name %></div>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar" style="width: <%= maxVotes > 0 ? Math.round((c.voteCount / maxVotes) * 100) : 0 %>%"></div>
+                </div>
+                <div class="result-votes">
+                    <strong><%= c.voteCount %></strong><br>
+                    <span style="font-size:0.75rem;color:#aaa;"><%= voted > 0 ? Math.round((c.voteCount/voted)*100) : 0 %>%</span>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <% }) %>
+
+    </div>
+</body>
+</html>
